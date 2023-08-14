@@ -1,6 +1,6 @@
 # ddos
 # installation
-rm -rf U-DDOS
+rm -rf ddos
 git clone https://github.com/Tan-vai/ddos
 cd ddos
 npm i requests
